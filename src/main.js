@@ -24,22 +24,22 @@ const stopGame = function(){
   putRestartButton();
 }
 
-const hasCollided = function (head) {
-  return collisionWithAnyWall(head) || collisionWithItself(head);
+const hasCollided = function (snakeHead) {
+  return hasHitAnyWall(snakeHead) || hasEatenItself(snakeHead);
 }
 
-const collisionWithItself = function (head) {
-  return snake.getBody().some(bodyPos => head.isSameCoordAs(bodyPos));
+const hasEatenItself = function (snakeHead) {
+  return snake.getBody().some(bodyPos => snakeHead.isSameCoordAs(bodyPos));
 }
 
-const collisionWithAnyWall = function (head) {
-  let isInsideXCoordRange = head.isXCoordBetween(0, numberOfCols - 1);
-  let isInsideYCoordRange = head.isYCoordBetween(0, numberOfCols - 1);
-  return !isInsideXCoordRange || !isInsideYCoordRange;
+const hasHitAnyWall = function (snakeHead) {
+  let isInXCoordRange = snakeHead.isXCoordBetween(0, numberOfCols - 1);
+  let isInYCoordRange = snakeHead.isYCoordBetween(0, numberOfCols - 1);
+  return !isInXCoordRange || !isInYCoordRange;
 }
 
-const growIfEatenFood = function (head) {
-  if (head.isSameCoordAs(food)) {
+const growIfEatenFood = function (snakeHead) {
+  if (snakeHead.isSameCoordAs(food)) {
     snake.grow();
     createFood(numberOfRows, numberOfCols);
     drawFood(food);

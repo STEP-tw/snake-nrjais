@@ -33,7 +33,9 @@
 }
 
 #restart_button{
-  font-size: 20px;
+  font-size: 16px;
+  color: blue;
   padding: 5px;
   border :none;
+  margin: 10px
 }
