@@ -63,6 +63,11 @@ const addKeyListener = function () {
   grid.focus();
 }
 
+const removeKeyListener = function () {
+  let grid = document.getElementById("keys");
+  grid.onkeyup = null;
+}
+
 const createSnake = function () {
   let tail = new Position(12, 10, "east");
   let body = [];
@@ -79,6 +84,7 @@ const createFood = function (numberOfRows, numberOfCols) {
 
 const restartGame = function(){
   clearPreviousGame();
+  removeKeyListener();
   startGame();
 }
 
