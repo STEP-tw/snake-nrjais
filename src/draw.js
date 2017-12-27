@@ -11,6 +11,13 @@ const drawGrids=function(numberOfRows,numberOfCols) {
   }
 }
 
+const clearPreviousGame = function(){
+  let grid=document.getElementById("grid");
+  let resultDiv = document.getElementById('result');
+  grid.innerHTML = "";
+  resultDiv.innerHTML = "";
+}
+
 const paintCell=function(pos,color) {
   let cell=document.getElementById(pos.getCoord().join("_"));
   if(cell)
@@ -38,4 +45,18 @@ const drawSnake=function(snake) {
 
 const drawFood=function(food) {
   paintCell(food,"food");
+}
+
+const putRestartButton = function(){
+  let resultDiv = document.getElementById('result');
+  let restartButton = document.createElement('button');
+  restartButton.id = "restart_button";
+  restartButton.innerText = "Play Again";
+  restartButton.onclick = restartGame;
+
+  let resultText = document.createElement('span');
+  resultText.innerText = "Game Over";
+
+  resultDiv.appendChild(resultText);
+  resultDiv.appendChild(restartButton);
 }

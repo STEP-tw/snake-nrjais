@@ -9,13 +9,19 @@ const animateSnake = function () {
   let oldHead = snake.getHead();
   let oldTail = snake.move();
   let head = snake.getHead();
+  if (hasCollided(head)) {
+    stopGame();
+    return;
+  }
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
   growIfEatenFood(head);
-  if (hasCollided(head)) {
-    console.log('collided');
-  }
+}
+
+const stopGame = function(){
+  clearInterval(animator);
+  putRestartButton();
 }
 
 const hasCollided = function (head) {
@@ -73,6 +79,11 @@ const createSnake = function () {
 
 const createFood = function (numberOfRows, numberOfCols) {
   food = generateRandomPosition(numberOfCols, numberOfRows);
+}
+
+const restartGame = function(){
+  clearPreviousGame();
+  startGame();
 }
 
 const startGame = function () {
