@@ -9,7 +9,7 @@ const animateSnake = function () {
   let oldHead = snake.getHead();
   let oldTail = snake.move();
   let head = snake.getHead();
-  if (hasCollided(head)) {
+  if (hasHitAnyWall(head)) {
     stopGame();
     return;
   }
@@ -17,15 +17,14 @@ const animateSnake = function () {
   unpaintSnake(oldTail);
   paintHead(head);
   growIfEatenFood(head);
+  if(snake.hasEatenItself()){
+    stopGame();
+  }
 }
 
 const stopGame = function(){
   clearInterval(animator);
   putRestartButton();
-}
-
-const hasCollided = function (snakeHead) {
-  return hasHitAnyWall(snakeHead) || snake.hasEatenItself();
 }
 
 const hasHitAnyWall = function (snakeHead) {
