@@ -29,7 +29,7 @@ const stopGame = function(){
 
 const hasHitAnyWall = function (snakeHead) {
   let isInXCoordRange = snakeHead.isXCoordBetween(0, numberOfCols - 1);
-  let isInYCoordRange = snakeHead.isYCoordBetween(0, numberOfCols - 1);
+  let isInYCoordRange = snakeHead.isYCoordBetween(0, numberOfRows - 1);
   return !isInXCoordRange || !isInYCoordRange;
 }
 
