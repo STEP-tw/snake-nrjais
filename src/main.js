@@ -25,17 +25,17 @@ const stopGame = function(){
 }
 
 const hasCollided = function (head) {
-  return collisionWithWalls(head) || collisionWithItself(head);
+  return collisionWithAnyWall(head) || collisionWithItself(head);
 }
 
 const collisionWithItself = function (head) {
   return snake.getBody().some(bodyPos => head.isSameCoordAs(bodyPos));
 }
 
-const collisionWithWalls = function (head) {
-  let lowerWallHitLimit = [0, 0];
-  let higherWallHitLimit = [numberOfCols - 1, numberOfRows - 1];
-  return head.x < 0 || head.x > numberOfCols - 1 || head.y < 0 || head.y > numberOfRows - 1;
+const collisionWithAnyWall = function (head) {
+  let isInsideXCoordRange = head.isXCoordBetween(0, numberOfCols - 1);
+  let isInsideYCoordRange = head.isYCoordBetween(0, numberOfCols - 1);
+  return !isInsideXCoordRange || !isInsideYCoordRange;
 }
 
 const growIfEatenFood = function (head) {

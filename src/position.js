@@ -39,6 +39,14 @@ Position.prototype.isSameCoordAs=function(other) {
   return this.x==other.x && this.y==other.y;
 }
 
+Position.prototype.isXCoordBetween = function (lower,upper) {
+  return this.x <= upper && this.x >= lower;
+}
+
+Position.prototype.isYCoordBetween = function (lower, upper) {
+  return this.y <= upper && this.y >= lower;
+}
+
 Position.prototype.getCoord=function() {
   return [this.x,this.y];
 }
