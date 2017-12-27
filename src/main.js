@@ -12,9 +12,14 @@ const animateSnake=function() {
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
-  if(head.isSameCoordAs(food)) {
+  growIfEatenFood(head);
+  
+}
+
+const growIfEatenFood = function(head){
+  if (head.isSameCoordAs(food)) {
     snake.grow();
-    createFood(numberOfRows,numberOfCols);
+    createFood(numberOfRows, numberOfCols);
     drawFood(food);
   }
 }
