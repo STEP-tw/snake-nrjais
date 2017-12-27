@@ -23,5 +23,8 @@ Snake.prototype={
   },
   turnRight:function() {
     this.head=this.head.turnRight();
+  },
+  hasEatenItself: function(){
+    return this.body.some(bodyPos => this.head.isSameCoordAs(bodyPos));
   }
 }

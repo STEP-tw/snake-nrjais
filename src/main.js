@@ -25,11 +25,7 @@ const stopGame = function(){
 }
 
 const hasCollided = function (snakeHead) {
-  return hasHitAnyWall(snakeHead) || hasEatenItself(snakeHead);
-}
-
-const hasEatenItself = function (snakeHead) {
-  return snake.getBody().some(bodyPos => snakeHead.isSameCoordAs(bodyPos));
+  return hasHitAnyWall(snakeHead) || snake.hasEatenItself();
 }
 
 const hasHitAnyWall = function (snakeHead) {
