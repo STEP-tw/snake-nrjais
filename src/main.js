@@ -13,7 +13,20 @@ const animateSnake=function() {
   unpaintSnake(oldTail);
   paintHead(head);
   growIfEatenFood(head);
-  
+  if(hasCollided(head)){
+    console.log('collided');
+    clearInterval(animator);
+  }
+}
+
+const hasCollided = function(head){
+  return collisionWithWalls(head);
+}
+
+const collisionWithWalls = function(head){
+  let lowerWallHitLimit = [0, 0];
+  let higherWallHitLimit = [numberOfCols - 1 , numberOfRows - 1];
+  return head.x < 0 || head.x > numberOfCols - 1 || head.y < 0 || head.y > numberOfRows - 1;
 }
 
 const growIfEatenFood = function(head){
